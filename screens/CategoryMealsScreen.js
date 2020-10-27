@@ -1,5 +1,4 @@
 import React from 'react';
-import {CATEGORIES} from '../data/dummy-data';
 import {useSelector} from'react-redux'
 import MealList from '../components/MealList';
 import {View,StyleSheet} from 'react-native';
@@ -22,10 +21,10 @@ const CategoryMealsScreen =props=>{
 }
 
 CategoryMealsScreen.navigationOptions = navigationData => {
-    const catId = navigationData.navigation.getParam('id');
-    const Category = CATEGORIES.find((category)=>category.id==catId);
+    const title = navigationData.navigation.getParam('title');
+  
     return {
-        headerTitle : Category.title
+        headerTitle : title
     }
 }
 

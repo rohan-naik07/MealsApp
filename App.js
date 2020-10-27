@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import * as Font from 'expo-font';
 import {AppLoading} from 'expo';
 import MealsNavigator from './navigation/MealsNavigator';
 import {createStore,combineReducers} from 'redux';
 import mealReducer from './store/reducers/meals';
+import categoryReducer from './store/reducers/categories';
 import {Provider} from 'react-redux';
 
 const reducer = combineReducers({
-  meals : mealReducer
+  meals : mealReducer,
+  categories : categoryReducer
 })
 
 const store = createStore(reducer);
@@ -24,7 +26,7 @@ const fetchFonts = ()=>{
 
 export default function App() {
   const [fontLoaded,setFontLoaded] = useState(false);
-
+ 
   if(!fontLoaded){
     return (
         <AppLoading
